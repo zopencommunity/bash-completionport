@@ -1,6 +1,6 @@
 # Update bump details accordingly. Use bump check to confirm.
 # bump: bash-completion-version /BASH-COMPLETION_VERSION="(.*)"/ https://github.com/scop/bash-completion.git|semver:*
-# BASH-COMPLETION_VERSION="V.R.M" # Specify a stable release
+# BASH-COMPLETION_VERSION="20060301" # Specify a stable release
 # export ZOPEN_STABLE_TAG="v${BASH-COMPLETION_VERSION}"
 export ZOPEN_STABLE_URL="https://github.com/scop/bash-completion/releases/download/2.15.0/bash-completion-2.15.0.tar.xz"
 export ZOPEN_STABLE_DEPS="autoconf automake m4 perl make zoslib bash gawk grep findutils sed coreutils"

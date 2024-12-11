@@ -1,10 +1,9 @@
 # Update bump details accordingly. Use bump check to confirm.
 # bump: bash-completion-version /BASH-COMPLETION_VERSION="(.*)"/ https://github.com/scop/bash-completion.git|semver:*
-# BASH-COMPLETION_VERSION="V.R.M" # Specify a stable release
-# export ZOPEN_STABLE_TAG="v${BASH-COMPLETION_VERSION}"
+BASH_COMPLETION_VERSION="2.15.0"
 export ZOPEN_STABLE_URL="https://github.com/scop/bash-completion/releases/download/2.15.0/bash-completion-2.15.0.tar.xz"
 export ZOPEN_STABLE_DEPS="autoconf automake m4 perl make zoslib bash gawk grep findutils sed coreutils"
-export ZOPEN_STABLE_TAG="2.15.0"
+export ZOPEN_STABLE_TAG="${BASH_COMPLETION_VERSION}"
 export ZOPEN_BUILD_LINE="STABLE"
 export ZOPEN_RUNTIME_DEPS="bash gawk grep findutils sed perl coreutils"
 export ZOPEN_CATEGORIES="shell development"
@@ -16,15 +15,12 @@ zopen_bootstrap()
   autoreconf -i
 }
 
-
-
 zopen_check_results()
 {
   dir="$1"
   pfx="$2"
   chk="$1/$2_check.log"
 
-  # Echo the following information to gauge build health
   echo "actualFailures:0"
   echo "totalTests:1"
   echo "expectedFailures:0"
@@ -33,7 +29,13 @@ zopen_check_results()
 
 zopen_get_version()
 {
-  # Modify to echo the version of your tool/library
-  # Rather than hardcoding the version, obtain the version by running the tool/library
-  echo "1.0.0"
+  echo "${BASH_COMPLETION_VERSION}"
+}
+
+zopen_install_caveats()
+{
+cat <<ZZ
+To use bash completions, add the following line to your ~/.bash_profile:
+ . "\$ZOPEN_PKGINSTALL/bash-completion/bash-completion/share/bash-completion/bash_completion"
+ZZ
 }

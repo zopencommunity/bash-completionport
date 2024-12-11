@@ -1,0 +1,39 @@
+# Update bump details accordingly. Use bump check to confirm.
+# bump: bash-completion-version /BASH-COMPLETION_VERSION="(.*)"/ https://github.com/scop/bash-completion.git|semver:*
+# BASH-COMPLETION_VERSION="V.R.M" # Specify a stable release
+# export ZOPEN_STABLE_TAG="v${BASH-COMPLETION_VERSION}"
+export ZOPEN_STABLE_URL="https://github.com/scop/bash-completion/releases/download/2.15.0/bash-completion-2.15.0.tar.xz"
+export ZOPEN_STABLE_DEPS="autoconf automake m4 perl make zoslib bash gawk grep findutils sed coreutils"
+export ZOPEN_STABLE_TAG="2.15.0"
+export ZOPEN_BUILD_LINE="STABLE"
+export ZOPEN_RUNTIME_DEPS="bash gawk grep findutils sed perl coreutils"
+export ZOPEN_CATEGORIES="shell development"
+#export ZOPEN_BOOTSTRAP="zopen_bootstrap"
+export ZOPEN_NAME="bashcompletion"
+
+zopen_bootstrap()
+{
+  autoreconf -i
+}
+
+
+
+zopen_check_results()
+{
+  dir="$1"
+  pfx="$2"
+  chk="$1/$2_check.log"
+
+  # Echo the following information to gauge build health
+  echo "actualFailures:0"
+  echo "totalTests:1"
+  echo "expectedFailures:0"
+  echo "expectedTotalTests:1"
+}
+
+zopen_get_version()
+{
+  # Modify to echo the version of your tool/library
+  # Rather than hardcoding the version, obtain the version by running the tool/library
+  echo "1.0.0"
+}

@@ -27,6 +27,15 @@ zopen_check_results()
   echo "expectedTotalTests:1"
 }
 
+zopen_append_to_env()
+{
+cat <<ZZ
+if [ ! -z "\$ZOPEN_IN_ZOPEN_BUILD" ]; then
+  export CMAKE_PREFIX_PATH="\$PWD/share/cmake/bash-completion/:\${CMAKE_PREFIX_PATH}"
+fi
+ZZ
+}
+
 zopen_get_version()
 {
   echo "${BASH_COMPLETION_VERSION}"

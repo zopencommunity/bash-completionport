@@ -1,14 +1,14 @@
 # Update bump details accordingly. Use bump check to confirm.
-# bump: bash-completion-version /BASH-COMPLETION_VERSION="(.*)"/ https://github.com/scop/bash-completion.git|semver:*
+# bump: bash-completion-version /BASH_COMPLETION_VERSION="(.*)"/ git:https://github.com/scop/bash-completion.git|re:/^v?(\d+\.\d+(\.\d+)?)$/|semver:*
 BASH_COMPLETION_VERSION="2.15.0"
-export ZOPEN_STABLE_URL="https://github.com/scop/bash-completion/releases/download/2.15.0/bash-completion-2.15.0.tar.xz"
+export ZOPEN_STABLE_URL="https://github.com/scop/bash-completion/releases/download/${BASH_COMPLETION_VERSION}/bash-completion-${BASH_COMPLETION_VERSION}.tar.xz"
 export ZOPEN_STABLE_DEPS="autoconf automake m4 perl make zoslib bash gawk grep findutils sed coreutils"
 export ZOPEN_STABLE_TAG="${BASH_COMPLETION_VERSION}"
 export ZOPEN_BUILD_LINE="STABLE"
 export ZOPEN_RUNTIME_DEPS="bash gawk grep findutils sed perl coreutils"
 export ZOPEN_CATEGORIES="shell development"
 #export ZOPEN_BOOTSTRAP="zopen_bootstrap"
-export ZOPEN_NAME="bashcompletion"
+export ZOPEN_NAME="bashcompletion-$BASH_COMPLETION_VERSION"
 
 zopen_bootstrap()
 {
